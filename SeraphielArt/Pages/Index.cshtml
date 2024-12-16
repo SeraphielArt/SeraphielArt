@@ -1,0 +1,66 @@
+﻿@page
+@model SeraphielArt.Pages.Dashboard
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<section class="section dashboard">
+    <div class="row">
+        <!-- Left side columns -->
+        <div class="col-lg-6">
+            <div class="row">
+
+                <!-- Reports -->
+                <div class="col-12">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Cards</h5>
+                            <div class="d-grid gap-2 mt-3">
+                                <a asp-page="/Card/Yuuki" class="btn btn-primary" type="button">Yuuki</a>
+                            </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <a asp-page="/Card/Liv" class="btn btn-primary" type="button">LivYuna</a>
+                            </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <a asp-page="/Card/Viana" class="btn btn-primary" type="button">Viana Octa</a>
+                            </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <a asp-page="/Card/Ravi" class="btn btn-primary" type="button">Ravi</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Left side columns -->
+        
+        <!-- Right side columns -->
+        <div class="col-lg-6">
+            <div class="row">
+
+                <!-- Reports -->
+                <div class="col-12">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Story</h5>
+                            <div class="d-grid gap-2 mt-3">
+                                <a asp-page="/Story/SolumanirV3" class="btn btn-primary" type="button">Solumanir</a>
+                            </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <a asp-page="/Story/SolumanirV2" class="btn btn-primary" type="button">Old version Solumanir</a>
+                            </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <a asp-page="/Story/SolumanirV1" class="btn btn-primary" type="button">Oldest version Solumanir</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- End Right side columns -->
+
+    </div>
+</section>

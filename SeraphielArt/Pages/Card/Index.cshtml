@@ -1,0 +1,32 @@
+﻿@page
+@model SeraphielArt.Pages.Cards.IndexModel
+@{
+    ViewData["Title"] = "Cards";
+    ViewData["Description"] = "Here you can view a list of cards from our contibutors, which reveal information about them, their commissions and where to find them.";
+}
+
+<section class="section register min-vh-100 d-flex flex-column py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column">
+                <div class="card col-lg-12">
+                    <div class="card-body">
+                        <h3 class="card-title justify-content-center">Cards index</h3>
+                        <div class="d-grid gap-2 mt-3">
+                            <a asp-page="/Card/Yuuki" class="btn btn-primary" type="button">Yuuki</a>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <a asp-page="/Card/Liv" class="btn btn-primary" type="button">LivYuna</a>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <a asp-page="/Card/Viana" class="btn btn-primary" type="button">Viana</a>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <a asp-page="/Card/Ravi" class="btn btn-primary" type="button">Ravi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

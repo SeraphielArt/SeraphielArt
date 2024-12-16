@@ -1,0 +1,98 @@
+﻿@page
+@using System.Data
+@using SeraphielArt.Pages.Cards
+@using static SeraphielArt.Pages.Cards.TableSupport
+
+@model SeraphielArt.Pages.Cards.YuukiModel
+@{
+    ViewData["Title"] = "Yuuki";
+}
+
+@{
+    DataTable mainTable = NewTable();
+    mainTable.TableName = "Test prices table";
+    mainTable.Columns.AddRange([new("Type"), new("Type1"), new("Type2"), new("Type3")]);
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.BaseComm, PriceRowType.BaseComm.ToString(), "10$", "20$", "30$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleExtension, PriceRowType.SingleExtension.ToString(), "10$-20$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.MultiExtension, PriceRowType.MultiExtension.ToString(), "10$", "15$", "20$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleSelectable, PriceRowType.SingleSelectable.ToString(), "10%"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.MultiSelectable, PriceRowType.MultiSelectable.ToString(), "10$", "20$", "20%"));
+
+    Tuple<string, string, string>[] social =
+    {
+        new("Discord", "bx bxl-discord", "https://discord.com/users/675020556655001611"),
+        new("🦋 Bluesky", "", "https://bsky.app/profile/seraphiel.art"),
+        new("Reddit", "bx bxl-reddit", "https://www.reddit.com/user/Yuuki2628"),
+    };
+
+    Tuple<string, string, string>[] payments =
+    {
+        new("Support via Paypal", "bx bxl-paypal", "https://paypal.me/SeraphielArt"),
+    };
+
+    Tuple<string>[] process =
+    {
+        new("Step 1"),
+        new("Step 2"),
+        new("Step 3"),
+        new("Step 4"),
+    };
+
+    Tuple<string, string>[] tos =
+    {
+        new("Tos rule number 1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam posuere erat eget velit efficitur, a sagittis mauris mattis. Integer ornare massa ut purus feugiat, pellentesque bibendum metus condimentum. Aenean tempor tincidunt posuere. Quisque eu dui eu sem pretium porta aliquet in enim. Sed nulla metus, tempor at mauris vitae, iaculis."),
+        new("Tos rule number 2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam posuere erat eget velit efficitur, a sagittis mauris mattis. Integer ornare massa ut purus feugiat, pellentesque bibendum metus condimentum. Aenean tempor tincidunt posuere. Quisque eu dui eu sem pretium porta aliquet in enim. Sed nulla metus, tempor at mauris vitae, iaculis."),
+        new("Tos rule number 3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam posuere erat eget velit efficitur, a sagittis mauris mattis. Integer ornare massa ut purus feugiat, pellentesque bibendum metus condimentum. Aenean tempor tincidunt posuere. Quisque eu dui eu sem pretium porta aliquet in enim. Sed nulla metus, tempor at mauris vitae, iaculis."),
+        new("Tos rule number 4", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam posuere erat eget velit efficitur, a sagittis mauris mattis. Integer ornare massa ut purus feugiat, pellentesque bibendum metus condimentum. Aenean tempor tincidunt posuere. Quisque eu dui eu sem pretium porta aliquet in enim. Sed nulla metus, tempor at mauris vitae, iaculis."),
+    };
+}
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Test table</h5>
+                    <p>All tables and accoditons are auto generated via backend code, this page just tests the code for each possible type of generated row.<br />Some are still being worked on and may appear the same as existing ones.</p>
+                    <p>The calculation to obtain the final price takes the rows of the table and adds them in the order they appear to the value</p>
+                    @TableSupport.GetPriceTable(mainTable)
+                </div>
+                <div class="card-footer">
+                    All prices are in USD
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@mainTable.TableName preview</h5>
+                    @TableSupport.GetPricePreviewTable(mainTable)
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title justify-content-center">Terms of Service</h3>
+                    @TableSupport.GetTosTable(tos)
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title justify-content-center">Socials</h3>
+                    @TableSupport.GetButtonsTable(social)
+                    <hr />
+                    <h3 class="card-title justify-content-center">Payment options</h3>
+                    @TableSupport.GetButtonsTable(payments)
+                    <hr />
+                    <h3 class="card-title justify-content-center">Export selections</h3>
+                    @TableSupport.TableExportScript(mainTable)
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title justify-content-center">Work timeline</h3>
+                    @TableSupport.GetProcessTable(process)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

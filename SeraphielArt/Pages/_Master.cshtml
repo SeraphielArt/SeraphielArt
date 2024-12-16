@@ -1,0 +1,208 @@
+﻿@using SeraphielArt.Pages.Characters
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicons -->
+    <link href="@Url.Content("~/img/favicon.svg")" type="image/svg+xml" rel="icon">
+    <link href="@Url.Content("~/img/favicon.svg")" type="image/svg+xml" rel="apple-touch-icon">
+
+    <!-- Discord Metadata -->
+    @{
+        string defaultDescription = "SeraphielArt default description. If you're seeing this, it means Yuuki didn't set a description for this page yet...";
+        string title = $"SeraphielArt - {ViewData["Title"]}";
+        string completeUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
+        string image = Url.Content($"~/img/{ViewData["Image"]?.ToString() ?? "seraphiel.png"}");
+        string description = ViewData["Description"]?.ToString() ?? defaultDescription;
+    }
+    <meta property="og:title" content="@title" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@completeUrl" />
+    <meta property="og:image" content="@image" />
+    <meta property="og:description" content="@description" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="@Url.Content("~/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/vendor/bootstrap-icons/bootstrap-icons.css")" rel="stylesheet">
+    <link href="@Url.Content("~/vendor/boxicons/css/boxicons.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/vendor/quill/quill.snow.css")" rel="stylesheet">
+    <link href="@Url.Content("~/vendor/quill/quill.bubble.css")" rel="stylesheet">
+    <link href="@Url.Content("~/vendor/remixicon/remixicon.css")" rel="stylesheet">
+    <link href="@Url.Content("~/vendor/simple-datatables/style.css")" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet">
+
+    <title>@title</title>
+    <!-- =======================================================
+    * Template Name: NiceAdmin
+    * Updated: Nov 17 2023 with Bootstrap v5.3.2
+    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <i class="bi bi-list toggle-sidebar-btn" style="margin-right:10px"></i>
+            <a asp-page="/Index" class="logo d-flex align-items-center">
+                <img src="@Url.Content("~/img/favicon.svg")" alt="">
+                <span class="d-none d-lg-block">SeraphielArt</span>
+            </a>
+        </div><!-- End Logo -->
+
+    </header><!-- End Header -->
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" asp-page="/Index">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+            <li class="nav-heading">Main Content</li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#function-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Cards</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="function-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-page="/Card/Yuuki">
+                            <i class="bi bi-circle"></i><span>Yuuki</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-page="/Card/Liv">
+                            <i class="bi bi-circle"></i><span>LivYuna</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-page="/Card/Viana">
+                            <i class="bi bi-circle"></i><span>Viana</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-page="/Card/Ravi">
+                            <i class="bi bi-circle"></i><span>Ravi</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Functions Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#story-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Story</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="story-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-page="/Story/SolumanirV3">
+                            <i class="bi bi-circle"></i><span>Solumanir</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-page="/Story/SolumanirV2">
+                            <i class="bi bi-circle"></i><span>Old version Solumanir</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-page="/Story/SolumanirV1">
+                            <i class="bi bi-circle"></i><span>Oldest version Solumanir</span>
+                        </a>
+                    </li>
+                </ul>
+            </li> <!-- End Story Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#characters-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Characters</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="characters-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    @{
+                        var chars = CharacterAPI.CharactersList
+                        .GroupBy(c => c.Character.Api)
+                        .Select(g => g.First())
+                        .ToDictionary(c => c.Character.Api, c => c.Character.Name);
+
+                        foreach (var elem in chars)
+                        {
+                            <li>
+                                <a href="/Character/@elem.Key">
+                                    <i class="bi bi-circle"></i><span>@elem.Value</span>
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </li> <!-- End Characters Nav -->
+
+            <li class="nav-heading">Other</li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-page="/Contact">
+                    <i class="bi bi-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li><!-- End Info Page Nav -->
+        </ul>
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>@Context.Request.Path.ToString().Substring(1)</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Index">Home</a></li>
+                    @{
+                        string[] path = Context.Request.Path.ToString().Substring(1).Split("/");
+                        string fullPath = "";
+                        foreach (string part in path)
+                        {
+                            string localPath = $"{fullPath}/{part}";
+                            <li class="breadcrumb-item active"><a href="@localPath">@part</a></li>
+                            fullPath += $"/{part}";
+                        }
+                    }
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        @RenderBody()
+
+    </main><!-- End #main -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="@Url.Content("~/vendor/apexcharts/apexcharts.min.js")"></script>
+    <script src="@Url.Content("~/vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/vendor/chart.js/chart.umd.js")"></script>
+    <script src="@Url.Content("~/vendor/echarts/echarts.min.js")"></script>
+    <script src="@Url.Content("~/vendor/quill/quill.min.js")"></script>
+    <script src="@Url.Content("~/vendor/simple-datatables/simple-datatables.js")"></script>
+    <script src="@Url.Content("~/vendor/tinymce/tinymce.min.js")"></script>
+    <script src="@Url.Content("~/vendor/php-email-form/validate.js")"></script>
+
+    <!-- Template Main JS File -->
+    <script src="@Url.Content("~/js/main.js")"></script>
+
+</body>
+
+</html>

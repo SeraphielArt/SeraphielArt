@@ -1,0 +1,14 @@
+﻿@using static SeraphielArt.Pages.Characters.CharacterData
+
+@model CharacterVersion[]
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "/Pages/_Master.cshtml";
+}
+
+@foreach(CharacterVersion version in Model)
+{
+    @version
+    <hr />
+}

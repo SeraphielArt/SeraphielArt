@@ -1,0 +1,116 @@
+﻿@page
+@using System.Data
+@using SeraphielArt.Pages.Cards
+@using static SeraphielArt.Pages.Cards.TableSupport
+
+@model SeraphielArt.Pages.Cards.RaviModel
+@{
+    ViewData["Title"] = "Ravi";
+    ViewData["Image"] = "a_ravi.jpg";
+}
+
+@{
+    DataTable mainTable = NewTable();
+    mainTable.TableName = "Commission prices";
+    mainTable.Columns.AddRange([new("Type"), new("Bust-up"), new("Half-Body"), new("Knee-up")]);
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.BaseComm, "Base Price", "35$", "55$", "75$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleSelectable, "Additional characters", "60%"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleExtension, "Complex details", "10$-70$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleExtension, "Background", "20$-70$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleExtension, "Private fee", "10%"));
+
+    Tuple<string, string, string>[] social =
+    {
+        new("🦋 Bluesky", "", "https://bsky.app/profile/umevild.bsky.social"),
+        new("Twitter", "bx bxl-twitter", "https://x.com/UmeVild"),
+    };
+
+    Tuple<string>[] process =
+    {
+        new("Customer: sends commission information and references."),
+        new("Ravi: reviews the commission information and approves/denies."),
+        new("Customer: sends 50% of the payment upfront."),
+        new("Ravi: makes a rough sketch and sends it for review."),
+        new("Customer: approves/reviews the sketch."),
+        new("Ravi: colors the sketch and sends it for review."),
+        new("Customer: approves/reviews the colored sketch."),
+        new("Ravi: creates the line art and sends it for approval."),
+        new("Customer: sends the remaining payment if they approve."),
+        new("Ravi: Finishes rendering and sends the customer the final piece."),
+    };
+
+    Tuple<string, string>[] tos =
+    {
+        new("Can and can't", $@"
+<table class=""table table-bordered"">
+    <thead>
+        <tr><th>Can do</th><th>Can't do</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>OCs</td><td>NSFW</td></tr>
+        <tr><td>Men</td><td>Girls</td></tr>
+        <tr><td>Boys</td><td>Buff/Muscolar men</td></tr>
+        <tr><td>Feminine boys</td><td>Heavy armor</td></tr>
+        <tr><td>Light gore</td><td>Mechs</td></tr>
+        <tr><td>Light horror</td><td>Furry</td></tr>
+    </tbody>
+</table>"),
+        new("References", "You must provide detailed and clear references including: character, pose or specific details. I will not draw based on texts only."),
+        new("Workload", "I only can work on max <strong>2 commissions</strong> at the same time, cannot work on multiple works. Please be patient."),
+        new("Urgency", "<strong>I will not accept any urgent commission.</strong>"),
+        new("Right to decline", "I have the right to decline any commission if I feel that it is out of my ability or comfort zone."),
+        new("Customer behavior","Please be polite, I will not accept any rude behavior. Your commission will be cancelled if that occurs."),
+        new("Credits and ownership", "I still retain ownership of the finished work. Please credit me when using my art as profile pictures or on social media, etc.<br>Please Do Not claim my art as your own."),
+        new("Promotion", "I have the right to post commissioned art to promote myself on my social media. However, if you request your commission for privacy, please tell me but this will be charged extra fee."),
+        new("Refunds", "Once your commission started, there will be no refunds.<i>(However, if you really need money back because of your emergency case, please message me in private. I will consider and refund you depend on the part of commission I am working on.)</i>"),
+        new("AI/NFT","<h1>NO!</h1>"),
+    };
+}
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Artwork prices</h5>
+                    @TableSupport.GetPriceTable(mainTable)
+                </div>
+                <div class="card-footer">
+                    All prices are in USD
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@mainTable.TableName preview</h5>
+                    @TableSupport.GetPricePreviewTable(mainTable)
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title justify-content-center">Terms of Service</h3>
+                    @TableSupport.GetTosTable(tos)
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title justify-content-center">Socials</h3>
+                    @TableSupport.GetButtonsTable(social)
+                    <hr />
+                    <h3 class="card-title justify-content-center">Payment options</h3>
+                    <span>Only on request. Please contact first.</span>
+                    <hr />
+                    <h3 class="card-title justify-content-center">Export selections</h3>
+                    @TableSupport.TableExportScript(mainTable)
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title justify-content-center">Work timeline</h3>
+                    @TableSupport.GetProcessTable(process)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

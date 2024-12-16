@@ -1,0 +1,125 @@
+﻿@page
+@using System.Data
+@using SeraphielArt.Pages.Cards
+@using static SeraphielArt.Pages.Cards.TableSupport
+
+@model SeraphielArt.Pages.Cards.LivModel
+@{
+    ViewData["Title"] = "LivYuna";
+    ViewData["Image"] = "a_liv.jpg";
+}
+
+@{
+    DataTable mainTable = NewTable();
+    mainTable.TableName = "Commission prices";
+    mainTable.Columns.AddRange([new("Type"), new("Headshot"), new("Half-Body"), new("Full-Body")]);
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.BaseComm, "Base Price", "60$", "80$", "100$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.MultiSelectable, "Additional characters", "45$", "60$", "75$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.MultiExtension, "Private fee", "10$", "15$", "20$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleExtension, "Complex details", "20$-50$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleExtension, "Background", "15$-50$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleExtension, "Lewd", "40-75%"));
+
+    DataTable comicsTable = NewTable();
+    comicsTable.TableName = "Comics commission prices";
+    comicsTable.Columns.AddRange([new("Type"), new("Big Frame"), new("Small Frame")]);
+    comicsTable.Rows.Add(comicsTable.NewRow(PriceRowType.MultiSelectable, "Emotes", "60$", "40$"));
+
+    DataTable emotesTable = NewTable();
+    emotesTable.TableName = "Emotes commission prices";
+    emotesTable.Columns.AddRange([new("Type"), new("Normal"), new("Animated")]);
+    emotesTable.Rows.Add(emotesTable.NewRow(PriceRowType.MultiSelectable, "Emote", "20$", "40$"));
+
+    Tuple<string, string, string>[] social =
+    {
+        new("🦋 Bluesky", "", "https://bsky.app/profile/liv.seraphiel.art"),
+        new("Discord", "bx bxl-discord", "https://discord.com/users/482396390689865759"),
+        new("Reddit", "bx bxl-reddit", "https://www.reddit.com/user/YunaLiv"),
+        new("Pixiv", "bx bxl-pixiv", "https://www.pixiv.net/en/users/52500833"),
+    };
+}
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@mainTable.TableName</h5>
+                    @TableSupport.GetPriceTable(mainTable)
+                    <h5 class="card-title">@comicsTable.TableName</h5>
+                    @TableSupport.GetPriceTable(comicsTable)
+                    <h5 class="card-title">@emotesTable.TableName</h5>
+                    @TableSupport.GetPriceTable(emotesTable)
+                </div>
+                <div class="card-footer">
+                    All prices are in USD
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">All prices preview</h5>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="accordion accordion-flush" id="accoditionCommission">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+                                            @mainTable.TableName preview
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accoditionCommission" style="">
+                                        <div class="accordion-body">
+                                            @TableSupport.GetPricePreviewTable(mainTable)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                            @comicsTable.TableName preview
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accoditionCommission" style="">
+                                        <div class="accordion-body">
+                                            @TableSupport.GetPricePreviewTable(comicsTable)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                            @emotesTable.TableName preview
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accoditionCommission" style="">
+                                        <div class="accordion-body">
+                                            @TableSupport.GetPricePreviewTable(emotesTable)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title justify-content-center">Socials</h3>
+                    @TableSupport.GetButtonsTable(social)
+                    <hr />
+                    <h3 class="card-title justify-content-center">Payment options</h3>
+                    <span>Only via invoice on request. Please contact via <a href="https://discord.com/users/482396390689865759">Discord</a></span>
+                    <hr />
+                    <h3 class="card-title justify-content-center">Export selections</h3>
+                    @TableSupport.TableExportScript(mainTable)
+                    @TableSupport.TableExportScript(comicsTable)
+                    @TableSupport.TableExportScript(emotesTable)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

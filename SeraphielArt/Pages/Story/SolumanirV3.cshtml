@@ -1,0 +1,38 @@
+﻿@page
+@using System.Data
+@using SeraphielArt.Pages.Cards
+@using static SeraphielArt.Pages.Cards.TableSupport
+
+@model SeraphielArt.Pages.Story.SolumanirV3Model
+@{
+    ViewData["Title"] = "Solumanir";
+    ViewData["Description"] = "Solumanir's story, written by Yuuki and Ushirokuma and made readable to anyone online in this page.";
+}
+
+@{
+    Tuple<string, Tuple<string, string>[]>[] chapters =
+    {
+        new("Test 1", [
+                new("AAA", "BBB"),
+                new("CCC", "DDD")
+            ]
+        ),
+        new("Test 2", [
+                new("AAA", "BBB")
+            ]
+        )
+    };
+}
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Solumanir</h5>
+                    @TableSupport.GetStoryTable(chapters)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

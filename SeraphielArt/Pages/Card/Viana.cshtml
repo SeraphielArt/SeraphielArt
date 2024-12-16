@@ -1,0 +1,99 @@
+﻿@page
+@using System.Data
+@using SeraphielArt.Pages.Cards
+@using static SeraphielArt.Pages.Cards.TableSupport
+
+@model SeraphielArt.Pages.Cards.VianaModel
+@{
+    ViewData["Title"] = "Viana";
+    ViewData["Image"] = "a_viana.jpg";
+}
+
+@{
+    DataTable mainTable = NewTable();
+    mainTable.TableName = "Commission prices";
+    mainTable.Columns.AddRange([new("Type"), new("Bust-up"), new("Half-Body"), new("Knee-up"), new("Full body")]);
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.BaseComm, "Base Price", "30$", "40$", "60$", "80$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.MultiSelectable, "Additional characters", "30$", "35$", "40$", "50$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleExtension, "Complex details", "10$-50$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleExtension, "Background", "20$-80$"));
+    mainTable.Rows.Add(mainTable.NewRow(PriceRowType.SingleExtension, "Private fee", "5%"));
+
+    Tuple<string, string, string>[] social =
+    {
+        new("🦋 Bluesky", "", "https://bsky.app/profile/vianaoctavi.bsky.social"),
+        new("Discord", "bx bxl-discord", "https://discord.com/users/646793117852499969"),
+        new("Twitter", "bx bxl-twitter", "https://x.com/VianaOctavi"),
+    };
+
+    Tuple<string>[] process =
+    {
+        new("Customer: sends commission information and references."),
+        new("Viana: reviews the commission information and approves/denies."),
+        new("Viana: makes a rough sketch and sends it for review."),
+        new("Customer: sends 100% of the payment upfront."),
+        new("Viana: continues working and updating the client, making lineart, flat-color and rendering."),
+        new("Viana: sends the final delivery to the customer."),
+    };
+
+    Tuple<string, string>[] tos =
+    {
+        new("References", "Before starting your request, please prepare all necessary references for the character/background you want to request."),
+        new("Timeline", "Time needed for each work varies depending on the difficulty and my current workload.<br>Please understand your order may be delayed because of IRL events such as college or sickness.<br>I will make sure to update you for any relevant event."),
+        new("Payment", "After the sketch is approved, you must pay the full price through Paypal."),
+        new("Revisions", "2 mayor revisions are allowed during the sketch phase, and 2 minor revisions are allowed during the lineart phase. Any additional requests may incur in additional costs for you."),
+        new("Credits and ownership", "I still retain ownership the artwork once the commission has been completed, therefore please credit me whenever you share the artwork.<br>Claiming the artwork as your own is not allowed."),
+        new("I may publish your commission", "There's the chance I may share your commission through my socials to advertise my service. I will add a watermark to the shared version to show it was a commission work.<br>You may ask me not to share the artwork, which may add a small fee to the total price."),
+        new("Artwork use", "Artwork is explicitly for personal use only. For any commercial use we may discuss it privately."),
+        new("Refunds", "If I'm unable to complete your request in a reasonable time, I will issue a full refund."),
+        new("AI/NFT","<h1>NO!</h1>"),
+    };
+}
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Commission prices</h5>
+                    @TableSupport.GetPriceTable(mainTable)
+                </div>
+                <div class="card-footer">
+                    All prices are in USD
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@mainTable.TableName preview</h5>
+                    @TableSupport.GetPricePreviewTable(mainTable)
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title justify-content-center">Terms of Service</h3>
+                    @TableSupport.GetTosTable(tos)
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title justify-content-center">Socials</h3>
+                    @TableSupport.GetButtonsTable(social)
+                    <hr />
+                    <h3 class="card-title justify-content-center">Payment options</h3>
+                    <span>Only via invoice on request. Please contact via <a href="https://discord.com/users/646793117852499969">Discord</a></span>
+                    <hr />
+                    <h3 class="card-title justify-content-center">Export selections</h3>
+                    @TableSupport.TableExportScript(mainTable)
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title justify-content-center">Work timeline</h3>
+                    @TableSupport.GetProcessTable(process)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
