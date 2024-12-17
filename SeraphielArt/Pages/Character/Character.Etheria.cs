@@ -45,68 +45,75 @@ As time went by, he faced many trials and tribulations and eventually found out 
             public class AliceHuman(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.HumanEtheria,
-                faction: Faction.None,
+                faction: Faction.Etherian,
                 strength: 7,
                 intelligence: 9,
                 age: 24,
                 height: 175,
-                shortDescription: "A skilled alchemist from another world"
+                shortDescription: "A skilled alchemist from another world",
+                altName: "Alice"
             )
             { }
             public class AliceVampire(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.HumanEtheria | Species.Vampire,
-                faction: Faction.None,
+                faction: Faction.Etherian,
                 strength: 9,
                 intelligence: 9,
                 mana: 3,
                 age: 28,
                 height: 175,
-                shortDescription: "An alchemist turned vampire for her loved one"
+                shortDescription: "An alchemist turned vampire for her loved one",
+                altName: "Vampire"
             )
             { }
+
             public class EdgarHomunculus(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.HomunculusEtheria,
-                faction: Faction.None,
+                faction: Faction.Etherian,
                 strength: 11,
                 intelligence: 9,
                 age: 29,
                 height: 164,
-                shortDescription: "A powerful artificial lifeform from another world"
+                shortDescription: "A powerful artificial lifeform from another world",
+                altName: "Homunculus"
             )
             { }
             public class EdgarSerpentLord(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.HomunculusEtheria | Species.ArtificialHybridian,
-                faction: Faction.None,
+                faction: Faction.Etherian,
                 strength: 15,
                 intelligence: 5,
                 age: 33,
                 height: 187,
-                shortDescription: "The creation of the love and despair of Olivia"
+                shortDescription: "The creation of the love and despair of Olivia",
+                altName: "Serpent Lord"
             )
             { }
             public class EdgarSerpent(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.HomunculusEtheria | Species.ArtificialHybridian,
-                faction: Faction.None,
+                faction: Faction.Etherian,
                 strength: 13,
                 intelligence: 9,
                 age: 33,
                 height: 164,
-                shortDescription: "A powerful serpent who took control of his own fate"
+                shortDescription: "A powerful serpent who took control of his own fate",
+                altName: "Serpent"
             )
             { }
             public class EdgarSeraph(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.HomunculusEtheria | Species.Seraph,
-                faction: Faction.None,
+                faction: Faction.Etherian,
                 strength: 11,
                 intelligence: 9,
                 age: 29,
                 height: 164,
-                shortDescription: "A powerful being achieved the ultimate ascension level in all of Solumniar"
+                shortDescription: "A powerful being achieved the ultimate ascension level in all of Solumniar",
+                altName: "Seraph"
             )
             { }
         }

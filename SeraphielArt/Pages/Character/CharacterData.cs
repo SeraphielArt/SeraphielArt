@@ -35,6 +35,23 @@ namespace SeraphielArt.Pages.Character
         }
 
         /// <summary>
+        /// Existing factions within the world of Solumanir
+        /// </summary>
+        public enum Faction
+        {
+            None = 0,
+            Etherian = 1 << 0,
+            Solumanirian = Etherian << 1,
+            FromHuvia = Solumanirian << 1,
+            FromVaxalif  = FromHuvia << 1,
+            FromTu = FromVaxalif << 1,
+            FromHeaven = FromTu << 1,
+            FromOutside = FromHeaven << 1,
+            ChuchMember = FromOutside << 1,
+
+        }
+
+        /// <summary>
         /// String names for each existing species
         /// </summary>
         private static Dictionary<Species, string> SpeciesNames { get; } = new()
@@ -131,14 +148,6 @@ namespace SeraphielArt.Pages.Character
         }
 
         /// <summary>
-        /// Existing factions within the world of Solumanir
-        /// </summary>
-        public enum Faction
-        {
-            None = 0,
-        }
-
-        /// <summary>
         /// Absract object containing information pertaining a character.
         /// </summary>
         /// <param name="name">Character name</param>
@@ -175,7 +184,7 @@ namespace SeraphielArt.Pages.Character
             int age,
             int height,
             string shortDescription,
-            string? altName = null,
+            string altName,
             int? mana = null,
             int? manaGem = null,
             int? manaAscended = null)

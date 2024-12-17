@@ -34,7 +34,7 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
             public class LeilaHuman(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.HumanSolumanir,
-                faction: Faction.None,
+                faction: Faction.Solumanirian,
                 strength: 5,
                 intelligence: 9,
                 mana: 0,
@@ -42,13 +42,14 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
                 manaAscended: 7,
                 age: 22,
                 height: 172,
-                shortDescription: "A skilled mage who just passed her exam"
+                shortDescription: "A skilled mage who just passed her exam",
+                altName: "Human"
             )
             { }
             public class LeilaDragon(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.ArtificialHybridian,
-                faction: Faction.None,
+                faction: Faction.Solumanirian,
                 strength: 14,
                 intelligence: 9,
                 mana: 9,
@@ -56,13 +57,14 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
                 manaAscended: null,
                 age: 23,
                 height: 184,
-                shortDescription: "A powerful dragon hybridian created by the Sanctuary"
+                shortDescription: "A powerful dragon hybridian created by the Sanctuary",
+                altName: "Dragon"
             )
             { }
             public class LeilaDragonfly(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.ArtificialHybridian,
-                faction: Faction.None,
+                faction: Faction.Solumanirian,
                 strength: 10,
                 intelligence: 11,
                 mana: 0,
@@ -70,13 +72,14 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
                 manaAscended: 14,
                 age: 23,
                 height: 172,
-                shortDescription: "A powerful dragonfly hybridian created by the Sanctuary"
+                shortDescription: "A powerful dragonfly hybridian created by the Sanctuary",
+                altName: "Dragonfly"
             )
             { }
             public class LeilaNeoVampireLord(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.Vampire,
-                faction: Faction.None,
+                faction: Faction.Solumanirian,
                 strength: 10,
                 intelligence: 9,
                 mana: 6,
@@ -84,13 +87,14 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
                 manaAscended: null,
                 age: 26,
                 height: 172,
-                shortDescription: "A mage turned into vampire lord against her will"
+                shortDescription: "A mage turned into vampire lord against her will",
+                altName: "Young Vampire Lord"
             )
             { }
             public class LeilaVampireLord(CharacterData.Character self) : CharacterVersion(
                 character: self,
                 species: Species.Vampire,
-                faction: Faction.None,
+                faction: Faction.Solumanirian,
                 strength: 13,
                 intelligence: 11,
                 mana: 13,
@@ -98,7 +102,8 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
                 manaAscended: 16,
                 age: 30,
                 height: 190,
-                shortDescription: "A human who embraced her vampire lord side and found herself"
+                shortDescription: "A human who embraced her vampire lord side and found herself",
+                altName: "Vampire Lord"
             )
             { }
         }
