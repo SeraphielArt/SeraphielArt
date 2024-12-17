@@ -69,17 +69,17 @@ namespace SeraphielArt.Pages.Character
         /// <returns>Combined descriptions of each species. One per line.</returns>
         public static string GetSpeciesName(Species species)
         {
-            StringBuilder description = new();
+            List<string> name = [];
 
             foreach (KeyValuePair<Species, string> spec in SpeciesNames)
             {
                 if ((species & spec.Key) == spec.Key)
                 {
-                    description.AppendLine(spec.Value);
+                    name.Add(spec.Value);
                 }
             }
 
-            return description.ToString().Trim();
+            return string.Join("|", name);
         }
 
         /// <summary>
@@ -117,17 +117,17 @@ namespace SeraphielArt.Pages.Character
         /// <returns>Combined descriptions of each species. One per line.</returns>
         public static string GetSpeciesDescription(Species species)
         {
-            StringBuilder description = new();
+            List<string> description = [];
 
             foreach (KeyValuePair<Species, string> spec in SpeciesDescriptions)
             {
                 if ((species & spec.Key) == spec.Key)
                 {
-                    description.AppendLine(spec.Value);
+                    description.Add(spec.Value);
                 }
             }
 
-            return description.ToString().Trim();
+            return string.Join("|", description);
         }
 
         /// <summary>
