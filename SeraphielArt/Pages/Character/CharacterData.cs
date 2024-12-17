@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace SeraphielArt.Pages.Characters
+namespace SeraphielArt.Pages.Character
 {
     public static class CharacterData
     {
@@ -42,12 +42,12 @@ namespace SeraphielArt.Pages.Characters
             {Species.HumanSolumanir, "Human"},
             {Species.HumanEtheria, "Etherian Human"},
             {Species.HomunculusEtheria, "Etherian Homunculus"},
-            {Species.ElfHuvian, "Huvian Elf"},
+            {Species.ElfHuvian, "Huvia Elf"},
             {Species.ElfVaxalif, "Vaxalif Elf"},
-            {Species.FoxHuvian, "Huvian Fox Hybridian"},
+            {Species.FoxHuvian, "Huvia Fox Hybridian"},
             {Species.FoxVaxalif, "Vaxalif Fox Hybridian"},
             {Species.FoxTu, "Tu Fox Hybridian"},
-            {Species.WolfHuvian, "Huvian Wolf Hybridian"},
+            {Species.WolfHuvian, "Huvia Wolf Hybridian"},
             {Species.WolfVaxalif, "Vaxalif Wolf Hybridian"},
             {Species.ArtificialHybridian, "Artificial Hybridian"},
             {Species.Merfolk, "Merfolk"},
@@ -61,7 +61,7 @@ namespace SeraphielArt.Pages.Characters
             {Species.Nereid, "Nereid"},
             {Species.Dryad, "Dryad"},
         };
-        
+
         /// <summary>
         /// Obtain the name in string format for a character's species, can be multiple species
         /// </summary>

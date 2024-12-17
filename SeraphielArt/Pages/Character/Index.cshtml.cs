@@ -1,7 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SeraphielArt.Pages.Characters
+namespace SeraphielArt.Pages.Character
 {
     public class IndexModel : PageModel
     {
