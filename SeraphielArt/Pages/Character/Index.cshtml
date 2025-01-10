@@ -1,0 +1,37 @@
+﻿@page
+@using static SeraphielArt.Pages.Character.CharacterData
+
+@model SeraphielArt.Pages.Character.IndexModel
+@{
+    ViewData["Title"] = "Characters";
+    ViewData["Description"] = "Here you can view a list of the characters part of the storyline of Solumanir, which was created by Yuuki and written by Yuuki and Ushirokuma.";
+}
+
+<section class="section register min-vh-100 d-flex flex-column py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column">
+                <div class="card col-lg-12">
+                    <div class="card-body">
+                        <h5 class="card-title">Characters list</h5>
+                        @{
+                            Character[] allCharacters = CharacterAPI.AllCharacters;
+
+                            for (int i = 0; i < allCharacters.Length; i++)
+                            {
+                                Character characterVersion = allCharacters[i];
+                                string cssClass = i == 0 ? "d-grid gap-2" : "d-grid gap-2 mt-3";
+
+                                <a class="@cssClass" href="/Characters/@characterVersion.Api">
+                                    <button type="button" class="btn btn-primary">
+                                        @characterVersion.Name
+                                    </button>
+                                </a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

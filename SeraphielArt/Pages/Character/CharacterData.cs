@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace SeraphielArt.Pages.Characters
+namespace SeraphielArt.Pages.Character
 {
     public static class CharacterData
     {
@@ -35,6 +35,23 @@ namespace SeraphielArt.Pages.Characters
         }
 
         /// <summary>
+        /// Existing factions within the world of Solumanir
+        /// </summary>
+        public enum Faction
+        {
+            None = 0,
+            Etherian = 1 << 0,
+            Solumanirian = Etherian << 1,
+            FromHuvia = Solumanirian << 1,
+            FromVaxalif  = FromHuvia << 1,
+            FromTu = FromVaxalif << 1,
+            FromHeaven = FromTu << 1,
+            FromOutside = FromHeaven << 1,
+            ChuchMember = FromOutside << 1,
+
+        }
+
+        /// <summary>
         /// String names for each existing species
         /// </summary>
         private static Dictionary<Species, string> SpeciesNames { get; } = new()
@@ -42,12 +59,12 @@ namespace SeraphielArt.Pages.Characters
             {Species.HumanSolumanir, "Human"},
             {Species.HumanEtheria, "Etherian Human"},
             {Species.HomunculusEtheria, "Etherian Homunculus"},
-            {Species.ElfHuvian, "Huvian Elf"},
+            {Species.ElfHuvian, "Huvia Elf"},
             {Species.ElfVaxalif, "Vaxalif Elf"},
-            {Species.FoxHuvian, "Huvian Fox Hybridian"},
+            {Species.FoxHuvian, "Huvia Fox Hybridian"},
             {Species.FoxVaxalif, "Vaxalif Fox Hybridian"},
             {Species.FoxTu, "Tu Fox Hybridian"},
-            {Species.WolfHuvian, "Huvian Wolf Hybridian"},
+            {Species.WolfHuvian, "Huvia Wolf Hybridian"},
             {Species.WolfVaxalif, "Vaxalif Wolf Hybridian"},
             {Species.ArtificialHybridian, "Artificial Hybridian"},
             {Species.Merfolk, "Merfolk"},
@@ -61,7 +78,7 @@ namespace SeraphielArt.Pages.Characters
             {Species.Nereid, "Nereid"},
             {Species.Dryad, "Dryad"},
         };
-        
+
         /// <summary>
         /// Obtain the name in string format for a character's species, can be multiple species
         /// </summary>
@@ -69,17 +86,17 @@ namespace SeraphielArt.Pages.Characters
         /// <returns>Combined descriptions of each species. One per line.</returns>
         public static string GetSpeciesName(Species species)
         {
-            StringBuilder description = new();
+            List<string> name = [];
 
             foreach (KeyValuePair<Species, string> spec in SpeciesNames)
             {
                 if ((species & spec.Key) == spec.Key)
                 {
-                    description.AppendLine(spec.Value);
+                    name.Add(spec.Value);
                 }
             }
 
-            return description.ToString().Trim();
+            return string.Join("|", name);
         }
 
         /// <summary>
@@ -117,25 +134,17 @@ namespace SeraphielArt.Pages.Characters
         /// <returns>Combined descriptions of each species. One per line.</returns>
         public static string GetSpeciesDescription(Species species)
         {
-            StringBuilder description = new();
+            List<string> description = [];
 
             foreach (KeyValuePair<Species, string> spec in SpeciesDescriptions)
             {
                 if ((species & spec.Key) == spec.Key)
                 {
-                    description.AppendLine(spec.Value);
+                    description.Add(spec.Value);
                 }
             }
 
-            return description.ToString().Trim();
-        }
-
-        /// <summary>
-        /// Existing factions within the world of Solumanir
-        /// </summary>
-        public enum Faction
-        {
-            None = 0,
+            return string.Join("|", description);
         }
 
         /// <summary>
@@ -175,7 +184,7 @@ namespace SeraphielArt.Pages.Characters
             int age,
             int height,
             string shortDescription,
-            string? altName = null,
+            string altName,
             int? mana = null,
             int? manaGem = null,
             int? manaAscended = null)
