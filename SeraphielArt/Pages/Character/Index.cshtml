@@ -13,20 +13,28 @@
             <div class="col-lg-4 col-md-6 d-flex flex-column">
                 <div class="card col-lg-12">
                     <div class="card-body">
-                        <h5 class="card-title">Characters list</h5>
                         @{
-                            Character[] allCharacters = CharacterAPI.AllCharacters;
+                            Faction[] factions = (Faction[])Enum.GetValues(typeof(Faction));
 
-                            for (int i = 0; i < allCharacters.Length; i++)
+                            for (int i = 1; i < factions.Length; i++)
                             {
-                                Character characterVersion = allCharacters[i];
-                                string cssClass = i == 0 ? "d-grid gap-2" : "d-grid gap-2 mt-3";
+                                <h5 class="card-title">@CharacterData.GetFactionName(factions[i])</h5>
+                                CharacterBase[] characters = CharacterAPI.CharactersList.SelectMany(array => array)
+                                                                                        .Where(v => ((int)v.Faction & (int)factions[i]) > 0)
+                                                                                        .Select(v => v.Character)
+                                                                                        .Distinct()
+                                                                                        .ToArray();
+                                for (int j = 0; j < characters.Length; j++)
+                                {
+                                    CharacterBase characterVersion = characters[j];
+                                    string cssClass = j == 0 ? "d-grid gap-2" : "d-grid gap-2 mt-3";
 
-                                <a class="@cssClass" href="/Characters/@characterVersion.Api">
-                                    <button type="button" class="btn btn-primary">
-                                        @characterVersion.Name
-                                    </button>
-                                </a>
+                                    <a class="@cssClass" href="/Characters/@characterVersion.Api">
+                                        <button type="button" class="btn btn-primary">
+                                            @characterVersion.Name
+                                        </button>
+                                    </a>
+                                }
                             }
                         }
                     </div>

@@ -6,11 +6,11 @@ namespace SeraphielArt.Pages.Character
     {
         public static partial class Etheria
         {
-            public class AliceBlessland : CharacterData.Character
+            public class AliceBlessland : CharacterBase
             {
                 private static readonly AliceBlessland Self = new();
-                public static readonly AliceHuman HumanEtherian = new(Self);
-                public static readonly AliceVampire Vampire = new(Self);
+                public static readonly CharacterVersion[] HumanEtherian = [new AliceHuman(Self)];
+                public static readonly CharacterVersion[] Vampire = [new AliceVampire(Self)];
 
                 public AliceBlessland() : base(
                     name: "Alice Blessland",
@@ -21,13 +21,13 @@ From losing her only living relative and her home, to traveling around Etheria, 
 ")
                 { }
             }
-            public class EdgarCrowbell : CharacterData.Character
+            public class EdgarCrowbell : CharacterBase
             {
                 private static readonly EdgarCrowbell Self = new();
-                public static readonly EdgarHomunculus Homunculus = new(Self);
-                public static readonly EdgarSerpentLord SerpentLord = new(Self);
-                public static readonly EdgarSerpent Serpent = new(Self);
-                public static readonly EdgarSeraph Seraph = new(Self);
+                public static readonly CharacterVersion[] Homunculus = [new EdgarHomunculus(Self)];
+                public static readonly CharacterVersion[] SerpentLord = [new EdgarSerpentLord(Self)];
+                public static readonly CharacterVersion[] Serpent = [new EdgarSerpent(Self)];
+                public static readonly CharacterVersion[] Seraph = [new EdgarSeraph(Self)];
 
                 public EdgarCrowbell() : base(
                     name: "Edgar Crowbell",
@@ -42,7 +42,7 @@ As time went by, he faced many trials and tribulations and eventually found out 
 
         public static partial class Etheria
         {
-            public class AliceHuman(CharacterData.Character self) : CharacterVersion(
+            public class AliceHuman(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.HumanEtheria,
                 faction: Faction.Etherian,
@@ -54,7 +54,7 @@ As time went by, he faced many trials and tribulations and eventually found out 
                 altName: "Alice"
             )
             { }
-            public class AliceVampire(CharacterData.Character self) : CharacterVersion(
+            public class AliceVampire(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.HumanEtheria | Species.Vampire,
                 faction: Faction.Etherian,
@@ -68,7 +68,7 @@ As time went by, he faced many trials and tribulations and eventually found out 
             )
             { }
 
-            public class EdgarHomunculus(CharacterData.Character self) : CharacterVersion(
+            public class EdgarHomunculus(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.HomunculusEtheria,
                 faction: Faction.Etherian,
@@ -80,7 +80,7 @@ As time went by, he faced many trials and tribulations and eventually found out 
                 altName: "Homunculus"
             )
             { }
-            public class EdgarSerpentLord(CharacterData.Character self) : CharacterVersion(
+            public class EdgarSerpentLord(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.HomunculusEtheria | Species.ArtificialHybridian,
                 faction: Faction.Etherian,
@@ -92,7 +92,7 @@ As time went by, he faced many trials and tribulations and eventually found out 
                 altName: "Serpent Lord"
             )
             { }
-            public class EdgarSerpent(CharacterData.Character self) : CharacterVersion(
+            public class EdgarSerpent(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.HomunculusEtheria | Species.ArtificialHybridian,
                 faction: Faction.Etherian,
@@ -104,7 +104,7 @@ As time went by, he faced many trials and tribulations and eventually found out 
                 altName: "Serpent"
             )
             { }
-            public class EdgarSeraph(CharacterData.Character self) : CharacterVersion(
+            public class EdgarSeraph(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.HomunculusEtheria | Species.Seraph,
                 faction: Faction.Etherian,

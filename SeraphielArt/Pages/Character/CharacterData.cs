@@ -35,23 +35,6 @@ namespace SeraphielArt.Pages.Character
         }
 
         /// <summary>
-        /// Existing factions within the world of Solumanir
-        /// </summary>
-        public enum Faction
-        {
-            None = 0,
-            Etherian = 1 << 0,
-            Solumanirian = Etherian << 1,
-            FromHuvia = Solumanirian << 1,
-            FromVaxalif  = FromHuvia << 1,
-            FromTu = FromVaxalif << 1,
-            FromHeaven = FromTu << 1,
-            FromOutside = FromHeaven << 1,
-            ChuchMember = FromOutside << 1,
-
-        }
-
-        /// <summary>
         /// String names for each existing species
         /// </summary>
         private static Dictionary<Species, string> SpeciesNames { get; } = new()
@@ -78,26 +61,6 @@ namespace SeraphielArt.Pages.Character
             {Species.Nereid, "Nereid"},
             {Species.Dryad, "Dryad"},
         };
-
-        /// <summary>
-        /// Obtain the name in string format for a character's species, can be multiple species
-        /// </summary>
-        /// <param name="species">Character species to evaluate</param>
-        /// <returns>Combined descriptions of each species. One per line.</returns>
-        public static string GetSpeciesName(Species species)
-        {
-            List<string> name = [];
-
-            foreach (KeyValuePair<Species, string> spec in SpeciesNames)
-            {
-                if ((species & spec.Key) == spec.Key)
-                {
-                    name.Add(spec.Value);
-                }
-            }
-
-            return string.Join("|", name);
-        }
 
         /// <summary>
         /// Description for each existing species
@@ -128,6 +91,26 @@ namespace SeraphielArt.Pages.Character
         };
 
         /// <summary>
+        /// Obtain the name in string format for a character's species, can be multiple species
+        /// </summary>
+        /// <param name="species">Character species to evaluate</param>
+        /// <returns>Combined descriptions of each species. One per line.</returns>
+        public static string GetSpeciesName(Species species)
+        {
+            List<string> name = [];
+
+            foreach (KeyValuePair<Species, string> spec in SpeciesNames)
+            {
+                if ((species & spec.Key) == spec.Key)
+                {
+                    name.Add(spec.Value);
+                }
+            }
+
+            return string.Join("|", name);
+        }
+
+        /// <summary>
         /// Obtain a description for a character's species, can be multiple species
         /// </summary>
         /// <param name="species">Character species to evaluate</param>
@@ -148,12 +131,62 @@ namespace SeraphielArt.Pages.Character
         }
 
         /// <summary>
+        /// Existing factions within the world of Solumanir
+        /// </summary>
+        [Flags]
+        public enum Faction
+        {
+            None = 0,
+            Etherian = 1 << 0,
+            FromHuvia = Etherian << 1,
+            FromVaxalif = FromHuvia << 1,
+            FromTu = FromVaxalif << 1,
+            FromHeaven = FromTu << 1,
+            ChuchMember = FromHeaven << 1,
+            FromOutside = ChuchMember << 1,
+        }
+
+        /// <summary>
+        /// String names for each existing species
+        /// </summary>
+        private static Dictionary<Faction, string> FactionNames { get; } = new()
+        {
+            {Faction.Etherian, "Etherian" },
+            {Faction.FromHuvia, "From Huvia"},
+            {Faction.FromVaxalif, "From Vaxaliv"},
+            {Faction.FromTu, "From Tu"},
+            {Faction.FromHeaven, "From Heaven"},
+            {Faction.ChuchMember, "Church members"},
+            {Faction.FromOutside, "Others"},
+        };
+        
+        /// <summary>
+        /// Obtain the name in string format for a character's species, can be multiple species
+        /// </summary>
+        /// <param name="species">Character species to evaluate</param>
+        /// <returns>Combined descriptions of each species. One per line.</returns>
+        public static string GetFactionName(Faction species)
+        {
+            List<string> name = [];
+
+            foreach (KeyValuePair<Faction, string> spec in FactionNames)
+            {
+                if ((species & spec.Key) == spec.Key)
+                {
+                    name.Add(spec.Value);
+                }
+            }
+
+            return string.Join("|", name);
+        }
+
+        /// <summary>
         /// Absract object containing information pertaining a character.
         /// </summary>
         /// <param name="name">Character name</param>
         /// <param name="name">Character api call path</param>
         /// <param name="description">Character general description</param>
-        public abstract class Character(string name, string api, string description = "")
+        public abstract class CharacterBase(string name, string api, string description = "")
         {
             public string Name { get; } = name;
             public string Api { get; } = api;
@@ -176,7 +209,7 @@ namespace SeraphielArt.Pages.Character
         /// <param name="manaGem">Character mana gem stat</param>
         /// <param name="manaAscended">Character ascended mana gem stat</param>
         public abstract class CharacterVersion(
-            Character character,
+            CharacterBase character,
             Species species,
             Faction faction,
             int strength,
@@ -189,7 +222,7 @@ namespace SeraphielArt.Pages.Character
             int? manaGem = null,
             int? manaAscended = null)
         {
-            public Character Character { get; } = character;
+            public CharacterBase Character { get; } = character;
             public Species Species { get; } = species;
             public Faction Faction { get; } = faction;
             public string? AltName { get; } = altName;

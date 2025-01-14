@@ -8,7 +8,7 @@ namespace SeraphielArt.Pages.Character
     [Route("Character")]
     public class CharacterAPI : Controller
     {
-        public static CharacterVersion[] CharactersList { get; } = [
+        public static CharacterVersion[][] CharactersList { get; } = [
             AliceBlessland.HumanEtherian,
             AliceBlessland.Vampire,
 
@@ -20,15 +20,14 @@ namespace SeraphielArt.Pages.Character
             LeilaAspor.Human,
             LeilaAspor.Dragon,
             LeilaAspor.Dragonfly,
-            LeilaAspor.NeoVampireLord,
             LeilaAspor.VampireLord,
         ];
 
         [HttpGet("{call}")]
         public IActionResult GetCharacterInformation(string call)
         {
-            CharacterVersion[] matchingCharacters = CharactersList.Where(v => v.Character.Api == call).ToArray();
-
+            CharacterVersion[] matchingCharacters = CharactersList.SelectMany(array => array)
+                                                                  .Where(v => v.Character.Api == call).ToArray();
             if (matchingCharacters.Length > 0)
             {
                 return View("CharacterVersion", matchingCharacters);
@@ -39,10 +38,11 @@ namespace SeraphielArt.Pages.Character
             }
         }
 
-        public static CharacterData.Character[] AllCharacters { get; } = CharactersList
-                                                                         .Select(v => v.Character)
-                                                                         .Distinct()
-                                                                         .ToArray();
+        public static CharacterBase[] AllCharacters { get; } = CharactersList
+                                                               .SelectMany(array => array)
+                                                               .Select(v => v.Character)
+                                                               .Distinct()
+                                                               .ToArray();
 
     }
 

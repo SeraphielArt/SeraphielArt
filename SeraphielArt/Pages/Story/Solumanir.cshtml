@@ -12,13 +12,16 @@
 @{
     Tuple<string, Tuple<string, string>[]>[] chapters =
     {
-        new("Test 1", [
-                new("AAA", "BBB"),
-                new("CCC", "DDD")
+        new("Solumanir", [
+                new("AAA", 
+                    "BBB"),
+                new("CCC", 
+                    "DDD")
             ]
         ),
         new("Test 2", [
-                new("AAA", "BBB")
+                new("AAA", 
+                    "BBB")
             ]
         )
     };
@@ -30,6 +33,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Solumanir</h5>
+                    <span>This is very cringe, you've been warned</span>
                     @TableSupport.GetStoryTable(chapters)
                 </div>
             </div>

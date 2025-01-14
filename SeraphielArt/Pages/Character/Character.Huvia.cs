@@ -6,16 +6,15 @@ namespace SeraphielArt.Pages.Character
     {
         public static partial class Huvia
         {
-            public class LeilaAspor : CharacterData.Character
+            public class LeilaAspor : CharacterBase
             {
                 private static readonly LeilaAspor Self = new();
-                public static readonly LeilaHuman Human = new(Self);
-                public static readonly LeilaDragon Dragon = new(Self);
-                public static readonly LeilaDragonfly Dragonfly = new(Self);
-                public static readonly LeilaNeoVampireLord NeoVampireLord = new(Self);
-                public static readonly LeilaVampireLord VampireLord= new(Self);
+                public static readonly CharacterVersion[] Human = [new LeilaHuman(Self)];
+                public static readonly CharacterVersion[] Dragon = [new LeilaDragon(Self)];
+                public static readonly CharacterVersion[] Dragonfly = [new LeilaDragonfly(Self)];
+                public static readonly CharacterVersion[] VampireLord = [new LeilaVampireLordYoung(Self), new LeilaVampireLordAdult(Self)];
 
-                public LeilaAspor() : base(
+                private LeilaAspor() : base(
                     name: "Leila Aspor Faeloria",
                     api: "Leila",
                     description: @$"
@@ -31,10 +30,10 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
 
         public static partial class Huvia
         {
-            public class LeilaHuman(CharacterData.Character self) : CharacterVersion(
+            public class LeilaHuman(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.HumanSolumanir,
-                faction: Faction.Solumanirian,
+                faction: Faction.FromHuvia,
                 strength: 5,
                 intelligence: 9,
                 mana: 0,
@@ -46,10 +45,10 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
                 altName: "Human"
             )
             { }
-            public class LeilaDragon(CharacterData.Character self) : CharacterVersion(
+            public class LeilaDragon(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.ArtificialHybridian,
-                faction: Faction.Solumanirian,
+                faction: Faction.FromHuvia,
                 strength: 14,
                 intelligence: 9,
                 mana: 9,
@@ -61,10 +60,10 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
                 altName: "Dragon"
             )
             { }
-            public class LeilaDragonfly(CharacterData.Character self) : CharacterVersion(
+            public class LeilaDragonfly(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.ArtificialHybridian,
-                faction: Faction.Solumanirian,
+                faction: Faction.FromHuvia,
                 strength: 10,
                 intelligence: 11,
                 mana: 0,
@@ -76,10 +75,10 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
                 altName: "Dragonfly"
             )
             { }
-            public class LeilaNeoVampireLord(CharacterData.Character self) : CharacterVersion(
+            public class LeilaVampireLordYoung(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.Vampire,
-                faction: Faction.Solumanirian,
+                faction: Faction.FromHuvia,
                 strength: 10,
                 intelligence: 9,
                 mana: 6,
@@ -91,10 +90,10 @@ Once graduated Leila decided to go on an adventure in the wilderness on her own.
                 altName: "Young Vampire Lord"
             )
             { }
-            public class LeilaVampireLord(CharacterData.Character self) : CharacterVersion(
+            public class LeilaVampireLordAdult(CharacterBase self) : CharacterVersion(
                 character: self,
                 species: Species.Vampire,
-                faction: Faction.Solumanirian,
+                faction: Faction.FromHuvia,
                 strength: 13,
                 intelligence: 11,
                 mana: 13,

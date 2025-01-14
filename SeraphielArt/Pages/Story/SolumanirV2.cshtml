@@ -5,6 +5,8 @@
     ViewData["Description"] = "Old version of Solumanir's story.";
 }
 
+@Redirect("/Solumanir")
+
 <div style="height: calc(100vh - 180px);">
     <iframe class="row-cols-lg-6 mb-3" frameBorder="0" src="@Url.Content("~/Twine/Solumanir_x_Etheria.html?" + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"))" scrolling="no" style="overflow: hidden; height: 100%; width: 100%;">
         Your browser is not able to display frames. Please try using a different browser of head <a href="@Url.Content("~/Twine/Solumanir_x_Etheria.html")">here</a>

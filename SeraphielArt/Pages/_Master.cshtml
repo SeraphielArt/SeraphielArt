@@ -113,18 +113,8 @@
                 </a>
                 <ul id="story-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a asp-page="/Story/SolumanirV3">
+                        <a asp-page="/Story/Solumanir">
                             <i class="bi bi-circle"></i><span>Solumanir</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-page="/Story/SolumanirV2">
-                            <i class="bi bi-circle"></i><span>Old version Solumanir</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-page="/Story/SolumanirV1">
-                            <i class="bi bi-circle"></i><span>Oldest version Solumanir</span>
                         </a>
                     </li>
                 </ul>
@@ -135,8 +125,14 @@
                     <i class="bi bi-menu-button-wide"></i><span>Characters</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="characters-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="/Character">
+                            <i class="bi bi-circle"></i><span>Index</span>
+                        </a>
+                    </li>
                     @{
                         var chars = CharacterAPI.CharactersList
+                        .SelectMany(array => array)
                         .GroupBy(c => c.Character.Api)
                         .Select(g => g.First())
                         .ToDictionary(c => c.Character.Api, c => c.Character.Name);
