@@ -16,7 +16,9 @@
     }
     else
     {
-        if ((character = CharacterAPI.AllCharacters.FirstOrDefault(c => c.Api == Model[0].Character.Api)) == null)
+        if ((character = CharacterAPI.CharactersList.SelectMany(array => array)
+                                                    .Select(c => c.Character)
+                                                    .FirstOrDefault(c => c.Api == Model[0].Character.Api)) == null)
         {
             Context.Response.Redirect("/Character/Index");
         }

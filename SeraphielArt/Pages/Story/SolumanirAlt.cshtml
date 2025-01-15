@@ -1,0 +1,80 @@
+﻿@page
+@using System.Data
+@using SeraphielArt.Pages.Cards
+@using static SeraphielArt.Pages.Cards.TableSupport
+
+@model SeraphielArt.Pages.Story.SolumanirAltModel
+@{
+    ViewData["Title"] = "Solumanir alternative";
+    ViewData["Description"] = "Solumanir's alternative story, written by Yuuki and Ushirokuma and made readable to anyone online in this page.";
+}
+
+@{
+    Tuple<string, Tuple<string, string>[]>[] chapters =
+    {
+        new("Huvia", [
+                new("Alice and Edgar arrive",
+$@"Alice and Edgar have arrived in Solumanir, they're immediately noticed by Seraphiel as they landed. The two find themselves in the nothern Huvia region, a desolate land corrupted by the demon toxins. A group of werewolves ambushes them and fights them.
+<br>Alice notices how her connection to the Etherian elements has disappeared and her power has greatly dimished, but Edgar seems to be able to maintain his strength and make quick work of the werewolves. Seraphiel notes them as interesting individuals but does not decide to intervene this time around.
+<br>Alice and Edgar prepare to leave this planet and move on to the next seeing there's nothing here, but they're interrupted by a young looking girl called Carmilla. Through her, Alice is able to learn the local language and teach Edgar as well, by using a special ring she crafted. They follow Carmilla to the outcasts village.
+<br>At the outcasts village, Olivia introduces herself as a succubus in need of help for an important mission. Edgar agrees to help Olivia later and in exchange she grants him access to the human black market. During their stay at the village, Carmilla bites Alice's neck in secret one night, revealing her identity as a half-vampire girl.
+<br>Alice is forever tied to Carmilla and Edgar promised Olivia he'd return. They part ways as both of them head toward the capital, Amanthir.
+"),
+                new("Amanthir",
+$@"Alice and Edgar run into a woman on the way to the capital, who seems injured. Alice looks at her and decides to heal her, while finding her cute. Both Edgar and Alice continue their trip, unseen by the girl and reach Amanthir's black market.
+<br>Alice and Edgar obtain forged documents and new identities as they try to gather more information and settle down. Alice opens an underground apothecary to sell medicine and gather information while Edgar decides to leave the city and return to the demon infested territories up north.
+<br>Leila, the girl that Alice had healed, managed to return to Amanthir safe and sound, though due to her lack of training she decides to visit a mysterious martial arts master to improve her abilities. She travels south to a remote beach currently being invaded by werewolves, where she meets this master, Kael, a wolf hybridian.
+<br>Leila starts training under Kael's regime. During the training the false-mermaid Lily lures Leila in and makes Leila fall for her. Leila returns to Amanthir some months later but getting injured by a werewolf on the way. She goes to visit a miracle doctor she's heard about and ends up meetings Alice in her apothecary, Alice remembers her as the girl she healed in the wilderness.
+<br>A small accident occurs when Leila's mana threads touch Alice's staff, causing Alice's staff to overload and consume the mana of the threads. Alice asks Leila out on a date and Leila agrees, while calling Alice a witch jokingly as Alice performs impossible feats of medicine.
+"),
+                new("Edgar in the north",
+$@"Edgar meets Carmilla while traveling north, and as they're talking he convinces himself and Carmilla not to kill her even though she's a demon, believeing she is different than the other vampires thanks to her intelligence. Carmilla starts to travel with him and slowly opening up to him.
+<br>Edgar and Carmilla return to the outcasts village and meet with Olivia again. Olvia fully reveals the truth behind the demons and partially reveals the mission she needed help with. Carmilla comes out as the daughter of the current vampire demon lord, Audrey. Edgar still believes in her humanity and decides to try to bring it out of her.
+<br>Edgar starts to hang out with Carmilla more, helping Carmilla face her fear of humans and taking her out to various places, bonding with her in the process. Edgar feels her desire to grow stronger and decides to help her learn wield a rapier. After training, Carmilla expresses her desire and frustrations about getting blood to drink.
+<br>Having noticed Carmilla's charm, Edgar and her go back to Amanthir through the black market and meet with Alice, then Leila and finally Leila's dad. Using Carmilla's charm the two start to extort information about ongoing cases from Leila's dad. Edgar and Carmilla start heading to the locations, finding the criminals and letting Carmilla drink them dry of all their blood, giving her blood intake and allowing her to start growing.
+<br>With the constant blood intake, Carmilla reaches her threshold and falls asleep for one month, waking up grown up to a teen now. Edgar, Carmilla and Olvia head north to the destroyed village, where they find the weavermaid's den. They end up in a fight, but Edgar refuses to kill her, letting her go instead after seeing she is an intelligent species as well.
+<br>Carmilla starts working with Edgar again to drink from more criminals and after reaching her threshold again she falls asleep or 3 months, finally waking up as a fully grown adult. Carmilla reveals him that even though she looked like a child she is 60 years old. Leila's father keeps investigating on the mysterious dark knight who has been making criminals disappear.
+"),
+                new("Alice in the south",
+$@"Alice joins Leila in another trip to the south, where Leila had met the martial artist Kael. Leila resumes her training regiment with Kael from where she had left off, wanting to finish the training this time. Alice meets Kael and learns of his absurd rules during training.
+<br>Kael starts to grow closer with Alice, making jokes, openly flirting and then making her join their training regiment as well. Alice complains but ends up working out with them. Alice is still bound with Carmilla, and as Carmilla has been growing stronger Alice did too, with the toxins in her body affecting her.
+<br>Kael is impressed by Alice's display. One night Kael catches Alice peeking on Leila one night and takes her to his room, finally confessing and Alice accepts him, as she is unable to ever confess to Leila as Leila is already engaged with Lily.
+<br>Alice convicences Kael to return to Amanthir with them, and once Leila's training is complete all of them returned to Amanthir together. Alice starts living with Kael in his villa. With Kael's help, Alice starts the practice to obtain real documents and citizenship in Huvia.
+<br>Leila returned to Amanthir, but only few days later she calls for Alice and Kael to travel north to her old home as they had initially planned. The three depart together and end up meeting Edgar, Carmilla and Olivia on the road. Leila turns aggressive toward them imediately as they're demons, but Alice manages to get Edgar to explain the situation.
+<br>Leila hates Edgar now, but gives up fighting him for now and starts moving north with Alice and Kael toward ther village. There is no major fight as the weaver is not there, but Leila is able to find peace after burying her mother's corpse.
+"),
+                new ("Dark-side story",
+$@"Edgar grows closer to Olivia and Carmilla, spending many months with them inside of the demon territories. Starting to help Olivia recharge her energy, Carmilla keeps trying to get Edgar to drink her blood, worried he may succumb to old age eventually.
+<br>Olivia starts to often tease Carmilla, going as far as teasing Carmilla for her hesitation fo confronting her mother directly. Olivia starts to hit sensibly Carmilla, which pushes Carmilla into rage and makes her lose control temporarily, Carmilla starts choking Olivia and bites deep into her neck, spilling lots of blood and vampirizing her. Edgar forces them apart after Olivia's painful screams.
+<br>Desperate to heal Olivia and blaming only herself for losing control, Carmilla tries to stop Olivia's brain from degenerating due to the demon transformation, but she's only able to stop it from going too fast. Carmilla believes Edgar hates her, but he finally licks Carmilla's blood to show her he does not.
+<br>It's clear Olivia's situation is getting worse, as within a few days Olivia started developing vampire fangs, her eyes started turning red and her intelligence started decreasing. Carmilla decides it may be better to request Audrey's help, she asks Edgar to come with her as she heads north to Audrey's castle. 
+<br>Edgar flies to Audrey's castle with Carmilla, and once arrived they end up fighting hordes of vampires defending the castle, the two of them break in and find Audrey in the banquet hall. Though, Audrey immediately refuses to help Carmilla, as Carmilla's growing power is menacing Audrey's own power over the vampires.
+<br>Being rejected Carmilla begs her, only to be refused again, Audrey launches a surprise attack on Carmilla with the intent to kill her, but is stopped by Edgar as he saw it coming. A battle start between them, in which it's clear that Audrey has the upper hand. The weavermaid ambushes Audrey while Edgar and Carmilla are fighting, but the tactic fails.
+<br>Audrey is overwhelming them, Edgar is forced into a defensive stance as Audrey starts to repeatedly attack him with her many blood whips, striking him from every angle and starting to accumulate damage on him. Carmilla seized the opportunity to dash toward Audrey, she uses the rapier Edgar trained her with and rolls the whip attacks away from her, dodging them until she's close enough to Audrey to stab her chest. Carmilla hugs Audrey as both fall to the ground together.
+<br>As they're falling, Carmilla bites into Audrey's neck, taking her blood and ascending to a vampire lord herself. The battle continues, now Audrey cannot use her network to regenerate either as Carmilla is a lord in her same network. Edgar feels something shift inside him after Carmilla's lord ascent. Carmilla's blood in Edgar reactivates and enchanches his dark abilities, glowing a dark red color as he grows exponentially. Edgar absorbs the life out of two vampires and recovers in time to continue the battle.
+<br>Carmilla is still weaker than Audrey even as a lord, the rapier Edgar had gifted her was broken by Audrey, forcing Carmilla to finally use blood weapons as she always could. Carmilla and Edgar are able to suppress Audrey by working together. Carmilla bites into Audrey again, draining her of all her blood and ending the life of the vampire lord. Carmilla transforms gruesomely into her final stage as vampire lord. Carmilla manipulates the network to give Olivia her conciousness back, yet Olivia will stay a half-vampire.
+<br>Carmilla decides to make things right with Huvia, and to help the Huvian people reclaim the demon infested territories, to do that she will destroy the other demon lords as Olivia wanted. After some thinking, Olivia proposes turning every demonic species into a vampire, so to undo the vampirization once the Alexandrite had been secured.
+"),
+            ]
+        ),
+        new("Vaxalif", [
+                new("AAA",
+                    "BBB")
+            ]
+        )
+    };
+}
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Solumanir</h5>
+                    <span>This is very cringe, you've been warned</span>
+                    @TableSupport.GetStoryTable(chapters)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

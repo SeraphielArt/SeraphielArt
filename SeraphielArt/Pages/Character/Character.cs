@@ -27,7 +27,7 @@ namespace SeraphielArt.Pages.Character
         public IActionResult GetCharacterInformation(string call)
         {
             CharacterVersion[] matchingCharacters = CharactersList.SelectMany(array => array)
-                                                                  .Where(v => v.Character.Api == call).ToArray();
+                                                                  .Where(c => c.Character.Api == call).ToArray();
             if (matchingCharacters.Length > 0)
             {
                 return View("CharacterVersion", matchingCharacters);
@@ -37,13 +37,6 @@ namespace SeraphielArt.Pages.Character
                 return Redirect("/Error");
             }
         }
-
-        public static CharacterBase[] AllCharacters { get; } = CharactersList
-                                                               .SelectMany(array => array)
-                                                               .Select(v => v.Character)
-                                                               .Distinct()
-                                                               .ToArray();
-
     }
 
 
