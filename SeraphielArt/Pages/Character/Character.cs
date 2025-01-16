@@ -21,6 +21,9 @@ namespace SeraphielArt.Pages.Character
             LeilaAspor.Dragon,
             LeilaAspor.Dragonfly,
             LeilaAspor.VampireLord,
+
+            Lucilda.DawnStar,
+            Lucilda.Angel,
         ];
 
         [HttpGet("{call}")]
@@ -42,5 +45,12 @@ namespace SeraphielArt.Pages.Character
 
     public static partial class CharacterList
     {
+        private static class APIs
+        {
+            public const string Alice = "Alice";
+            public const string Edgar = "Edgar";
+            public const string Leila = "Leila";
+            public const string Lucilda = "Lucilda";
+        }
     }
 }
