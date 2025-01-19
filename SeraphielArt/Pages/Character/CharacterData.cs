@@ -191,47 +191,36 @@ namespace SeraphielArt.Pages.Character
             public string Name { get; } = name;
             public string Api { get; } = api;
             public string Description { get; } = description.Trim();
+            public abstract CharacterVersion[] Versions { get; }
         }
 
         /// <summary>
         /// Unique version of a character in a certain point of their life
         /// </summary>
-        /// <param name="character">Character this version is based on</param>
-        /// <param name="species">Species of the character</param>
-        /// <param name="faction">Factions the character is part of</param>
-        /// <param name="strength">Character strenght stat</param>
-        /// <param name="intelligence">Character intelligence stat</param>
-        /// <param name="age">Character age</param>
-        /// <param name="height">Character height</param>
-        /// <param name="shortDescription">Character description tied to this version</param>
-        /// <param name="altName">Alternative name (if given)</param>
-        /// <param name="mana">Character mana stat</param>
-        /// <param name="manaGem">Character mana gem stat</param>
-        /// <param name="manaAscended">Character ascended mana gem stat</param>
-        public abstract class CharacterVersion(
-            CharacterBase character,
-            Species species,
-            Faction faction,
-            int strength,
-            int intelligence,
-            int age,
-            int height,
-            string shortDescription,
-            string altName,
-            int? mana = null,
-            int? manaGem = null,
-            int? manaAscended = null)
-        {
-            public CharacterBase Character { get; } = character;
-            public Species Species { get; } = species;
-            public Faction Faction { get; } = faction;
-            public string? AltName { get; } = altName;
-            public int Strength { get; } = strength;
-            public int Intelligence { get; } = intelligence;
-            public int?[] Mana { get; } = [mana, manaGem, manaAscended];
-            public int Age { get; } = age;
-            public int Height { get; } = height;
-            public string? ShortDescription { get; } = shortDescription;
-        }
+        /// <param name="Character">Character this version is based on</param>
+        /// <param name="Species">Species of the character</param>
+        /// <param name="Faction">Factions the character is part of</param>
+        /// <param name="Strength">Character strenght stat</param>
+        /// <param name="Intelligence">Character intelligence stat</param>
+        /// <param name="Age">Character age</param>
+        /// <param name="Height">Character height</param>
+        /// <param name="ShortDescription">Character description tied to this version</param>
+        /// <param name="AltName">Alternative name (if given)</param>
+        /// <param name="Mana">Character mana stat</param>
+        /// <param name="ManaGem">Character mana gem stat</param>
+        /// <param name="ManaAscended">Character ascended mana gem stat</param>
+        public record CharacterVersion(
+            CharacterBase Character,
+            Species Species,
+            Faction Faction,
+            int Strength,
+            int Intelligence,
+            int Age,
+            int Height,
+            string ShortDescription,
+            string AltName,
+            int? Mana = null,
+            int? ManaGem = null,
+            int? ManaAscended = null);
     }
 }

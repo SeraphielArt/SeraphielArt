@@ -8,11 +8,18 @@ namespace SeraphielArt.Pages.Character
         {
             public class LeilaAspor : CharacterBase
             {
-                private static readonly LeilaAspor Self = new();
-                public static readonly CharacterVersion[] Human = [new LeilaHuman(Self)];
-                public static readonly CharacterVersion[] Dragon = [new LeilaDragon(Self)];
-                public static readonly CharacterVersion[] Dragonfly = [new LeilaDragonfly(Self)];
-                public static readonly CharacterVersion[] VampireLord = [new LeilaVampireLordYoung(Self), new LeilaVampireLordAdult(Self)];
+                public static readonly LeilaAspor Self = new();
+                public static CharacterVersion Human => LeilaHuman;
+                public static CharacterVersion Dragon => LeilaDragon;
+                public static CharacterVersion Dragonfly => LeilaDragonfly;
+                public static CharacterVersion[] VampireLord => LeilaVampireLord;
+                public override CharacterVersion[] Versions { get; } =
+                [
+                    Human,
+                    Dragon,
+                    Dragonfly,
+                    .. VampireLord,
+                ];
 
                 private LeilaAspor() : base(
                     name: "Leila Aspor Faeloria",
@@ -28,9 +35,14 @@ Leila is a human girl coming from a village remotely north of the Huvia Republic
             }
             public class Lucilda : CharacterBase
             {
-                private static readonly Lucilda Self = new();
-                public static readonly CharacterVersion[] DawnStar = [new LucildaDawnStar(Self)];
-                public static readonly CharacterVersion[] Angel = [new LucildaAngel(Self)];
+                public static readonly Lucilda Self = new();
+                public static CharacterVersion DawnStar => LucildaDawnStar;
+                public static CharacterVersion Angel => LucildaAngel;
+                public override CharacterVersion[] Versions { get; } =
+                [
+                    DawnStar,
+                    Angel,
+                ];
 
                 private Lucilda() : base(
                     name: "Lucilda Dawn Star",
@@ -47,111 +59,108 @@ Lucilda is an angel who worked in the Sanctuary as a means to develop technology
         }
         public static partial class Huvia
         {
-            public class LeilaHuman(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.HumanSolumanir,
-                faction: Faction.FromHuvia,
-                strength: 5,
-                intelligence: 9,
-                mana: 0,
-                manaGem: 5,
-                manaAscended: 7,
-                age: 22,
-                height: 172,
-                shortDescription: "A skilled mage who just passed her exam",
-                altName: "Human"
-            )
-            { }
-            public class LeilaDragon(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.ArtificialHybridian,
-                faction: Faction.FromHuvia,
-                strength: 14,
-                intelligence: 9,
-                mana: 9,
-                manaGem: 13,
-                manaAscended: null,
-                age: 23,
-                height: 184,
-                shortDescription: "A powerful dragon hybridian created by the Sanctuary",
-                altName: "Dragon"
-            )
-            { }
-            public class LeilaDragonfly(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.ArtificialHybridian,
-                faction: Faction.FromHuvia,
-                strength: 10,
-                intelligence: 11,
-                mana: 0,
-                manaGem: 10,
-                manaAscended: 14,
-                age: 23,
-                height: 172,
-                shortDescription: "A powerful dragonfly hybridian created by the Sanctuary",
-                altName: "Dragonfly"
-            )
-            { }
-            public class LeilaVampireLordYoung(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.Vampire,
-                faction: Faction.FromHuvia,
-                strength: 10,
-                intelligence: 9,
-                mana: 6,
-                manaGem: 11,
-                manaAscended: null,
-                age: 26,
-                height: 172,
-                shortDescription: "A mage turned into vampire lord against her will",
-                altName: "Young Vampire Lord"
-            )
-            { }
-            public class LeilaVampireLordAdult(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.Vampire,
-                faction: Faction.FromHuvia,
-                strength: 13,
-                intelligence: 11,
-                mana: 13,
-                manaGem: 15,
-                manaAscended: 16,
-                age: 30,
-                height: 190,
-                shortDescription: "A human who embraced her vampire lord side and found herself",
-                altName: "Vampire Lord"
-            )
-            { }
-            public class LucildaDawnStar(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.Angel | Species.ArtificialHybridian,
-                faction: Faction.FromHuvia,
-                strength: 15,
-                intelligence: 6,
-                mana: 0,
-                manaGem: 15,
-                manaAscended: null,
-                age: 1200,
-                height: 176,
-                shortDescription: "A corrupt angel with an insatiable desire for knowledge and souls",
-                altName: "Dawn Star"
-            )
-            { }
-            public class LucildaAngel(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.Angel,
-                faction: Faction.FromHuvia,
-                strength: 13,
-                intelligence: 9,
-                mana: 0,
-                manaGem: 13,
-                manaAscended: null,
-                age: 1200,
-                height: 170,
-                shortDescription: "An angel who discarded her corrupt half",
-                altName: "Angel"
-            )
-            { }
+            static readonly CharacterVersion LeilaHuman = new(
+                Character: LeilaAspor.Self,
+                Species: Species.HumanSolumanir,
+                Faction: Faction.FromHuvia,
+                Strength: 5,
+                Intelligence: 9,
+                Mana: 0,
+                ManaGem: 5,
+                ManaAscended: 7,
+                Age: 22,
+                Height: 172,
+                ShortDescription: "A skilled mage who just passed her exam",
+                AltName: "Human"
+            );
+            static readonly CharacterVersion LeilaDragon = new(
+                Character: LeilaAspor.Self,
+                Species: Species.ArtificialHybridian,
+                Faction: Faction.FromHuvia,
+                Strength: 14,
+                Intelligence: 9,
+                Mana: 9,
+                ManaGem: 13,
+                ManaAscended: null,
+                Age: 23,
+                Height: 184,
+                ShortDescription: "A powerful dragon hybridian created by the Sanctuary",
+                AltName: "Dragon"
+            );
+            static readonly CharacterVersion LeilaDragonfly = new(
+                Character: LeilaAspor.Self,
+                Species: Species.ArtificialHybridian,
+                Faction: Faction.FromHuvia,
+                Strength: 10,
+                Intelligence: 11,
+                Mana: 0,
+                ManaGem: 10,
+                ManaAscended: 14,
+                Age: 23,
+                Height: 172,
+                ShortDescription: "A powerful dragonfly hybridian created by the Sanctuary",
+                AltName: "Dragonfly"
+            );
+            static readonly CharacterVersion[] LeilaVampireLord = 
+            [
+                new(
+                    Character: LeilaAspor.Self,
+                    Species: Species.Vampire,
+                    Faction: Faction.FromHuvia,
+                    Strength: 10,
+                    Intelligence: 9,
+                    Mana: 6,
+                    ManaGem: 11,
+                    ManaAscended: null,
+                    Age: 26,
+                    Height: 172,
+                    ShortDescription: "A mage turned into vampire lord against her will",
+                    AltName: "Vampire Lord"
+                ),
+                new(
+                    Character: LeilaAspor.Self,
+                    Species: Species.Vampire,
+                    Faction: Faction.FromHuvia,
+                    Strength: 13,
+                    Intelligence: 11,
+                    Mana: 13,
+                    ManaGem: 15,
+                    ManaAscended: 16,
+                    Age: 30,
+                    Height: 190,
+                    ShortDescription: "A human who embraced her vampire lord side and found herself",
+                    AltName: "Vampire Lord"
+                ),
+            ];
+
+            static readonly CharacterVersion LucildaDawnStar = new(
+                Character: Lucilda.Self,
+                Species: Species.Angel | Species.ArtificialHybridian,
+                Faction: Faction.FromHuvia,
+                Strength: 15,
+                Intelligence: 6,
+                Mana: 0,
+                ManaGem: 15,
+                ManaAscended: null,
+                Age: 1200,
+                Height: 176,
+                ShortDescription: "A corrupt angel with an insatiable desire for knowledge and souls",
+                AltName: "Dawn Star"
+            );
+            static readonly CharacterVersion LucildaAngel = new(
+                Character: Lucilda.Self,
+                Species: Species.Angel,
+                Faction: Faction.FromHuvia,
+                Strength: 13,
+                Intelligence: 9,
+                Mana: 0,
+                ManaGem: 13,
+                ManaAscended: null,
+                Age: 1200,
+                Height: 170,
+                ShortDescription: "An angel who discarded her corrupt half",
+                AltName: "Angel"
+            );
         }
     }
 }

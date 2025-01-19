@@ -19,19 +19,18 @@
                             for (int i = 1; i < factions.Length; i++)
                             {
                                 <h5 class="card-title">@CharacterData.GetFactionName(factions[i])</h5>
-                                CharacterBase[] characters = CharacterAPI.CharactersList.SelectMany(array => array)
-                                                                                        .Where(v => ((int)v.Faction & (int)factions[i]) > 0)
-                                                                                        .Select(v => v.Character)
-                                                                                        .Distinct()
-                                                                                        .ToArray();
-                                for (int j = 0; j < characters.Length; j++)
+                                Dictionary<string, string> chars = CharacterAPI.CharactersList.Where(v => ((int)v.Versions[0].Faction & (int)factions[i]) > 0)
+                                                                                              .ToDictionary(c => c.Api, c => c.Name);
+                                List<KeyValuePair<string, string>> charList = chars.ToList();
+
+                                for (int j = 0; j < chars.Count; j++)
                                 {
-                                    CharacterBase characterVersion = characters[j];
+                                    KeyValuePair<string, string> pair = charList[j];
                                     string cssClass = j == 0 ? "d-grid gap-2" : "d-grid gap-2 mt-3";
 
-                                    <a class="@cssClass" href="/Character/@characterVersion.Api">
+                                    <a class="@cssClass" href="/Character/@pair.Key">
                                         <button type="button" class="btn btn-primary">
-                                            @characterVersion.Name
+                                            @pair.Value
                                         </button>
                                     </a>
                                 }

@@ -136,11 +136,7 @@
                         </a>
                     </li>
                     @{
-                        var chars = CharacterAPI.CharactersList
-                        .SelectMany(array => array)
-                        .GroupBy(c => c.Character.Api)
-                        .Select(g => g.First())
-                        .ToDictionary(c => c.Character.Api, c => c.Character.Name);
+                        var chars = CharacterAPI.CharactersList.ToDictionary(c => c.Api, c => c.Name);
 
                         foreach (var elem in chars)
                         {

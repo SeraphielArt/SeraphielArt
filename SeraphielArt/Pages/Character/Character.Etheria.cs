@@ -8,9 +8,14 @@ namespace SeraphielArt.Pages.Character
         {
             public class AliceBlessland : CharacterBase
             {
-                private static readonly AliceBlessland Self = new();
-                public static readonly CharacterVersion[] HumanEtherian = [new AliceHuman(Self)];
-                public static readonly CharacterVersion[] Vampire = [new AliceVampire(Self)];
+                public static readonly AliceBlessland Self = new();
+                public static CharacterVersion HumanEtherian => AliceHuman;
+                public static CharacterVersion Vampire => AliceVampire;
+                public override CharacterVersion[] Versions { get; } = 
+                [
+                    HumanEtherian,
+                    Vampire,
+                ];
 
                 public AliceBlessland() : base(
                     name: "Alice Blessland",
@@ -23,11 +28,18 @@ A Human girl fearing from the distant world of Etheria, a land where an ancient 
             }
             public class EdgarCrowbell : CharacterBase
             {
-                private static readonly EdgarCrowbell Self = new();
-                public static readonly CharacterVersion[] Homunculus = [new EdgarHomunculus(Self)];
-                public static readonly CharacterVersion[] SerpentLord = [new EdgarSerpentLord(Self)];
-                public static readonly CharacterVersion[] Serpent = [new EdgarSerpent(Self)];
-                public static readonly CharacterVersion[] Seraph = [new EdgarSeraph(Self)];
+                public static readonly EdgarCrowbell Self = new();
+                public static CharacterVersion Homunculus => EdgarHomunculus;
+                public static CharacterVersion SerpentLord => EdgarSerpentLord;
+                public static CharacterVersion Serpent => EdgarSerpent;
+                public static CharacterVersion Seraph => EdgarSeraph;
+                public override CharacterVersion[] Versions { get; } =
+                [
+                    Homunculus,
+                    SerpentLord,
+                    Serpent,
+                    Seraph,
+                ];
 
                 public EdgarCrowbell() : base(
                     name: "Edgar Crowbell",
@@ -42,80 +54,74 @@ Edgar is an artificial being created with alchemy and the purpose to kill one of
 
         public static partial class Etheria
         {
-            public class AliceHuman(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.HumanEtheria,
-                faction: Faction.Etherian,
-                strength: 7,
-                intelligence: 9,
-                age: 24,
-                height: 175,
-                shortDescription: "A skilled alchemist from another world",
-                altName: "Alice"
-            )
-            { }
-            public class AliceVampire(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.HumanEtheria | Species.Vampire,
-                faction: Faction.Etherian,
-                strength: 9,
-                intelligence: 9,
-                mana: 3,
-                age: 28,
-                height: 175,
-                shortDescription: "An alchemist turned vampire for her loved one",
-                altName: "Vampire"
-            )
-            { }
+            static CharacterVersion AliceHuman { get; } = new(
+                Character: AliceBlessland.Self,
+                Species: Species.HumanEtheria,
+                Faction: Faction.Etherian,
+                Strength: 7,
+                Intelligence: 9,
+                Age: 24,
+                Height: 175,
+                ShortDescription: "A skilled alchemist from another world",
+                AltName: "Alice"
+            );
+            static CharacterVersion AliceVampire { get; } = new(
+                Character: AliceBlessland.Self,
+                Species: Species.HumanEtheria | Species.Vampire,
+                Faction: Faction.Etherian,
+                Strength: 9,
+                Intelligence: 9,
+                Mana: 3,
+                Age: 28,
+                Height: 175,
+                ShortDescription: "An alchemist turned vampire for her loved one",
+                AltName: "Vampire"
+            );
 
-            public class EdgarHomunculus(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.HomunculusEtheria,
-                faction: Faction.Etherian,
-                strength: 11,
-                intelligence: 9,
-                age: 29,
-                height: 164,
-                shortDescription: "A powerful artificial lifeform from another world",
-                altName: "Homunculus"
-            )
-            { }
-            public class EdgarSerpentLord(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.HomunculusEtheria | Species.ArtificialHybridian,
-                faction: Faction.Etherian,
-                strength: 15,
-                intelligence: 5,
-                age: 33,
-                height: 187,
-                shortDescription: "The creation of the love and despair of Olivia",
-                altName: "Serpent Lord"
-            )
-            { }
-            public class EdgarSerpent(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.HomunculusEtheria | Species.ArtificialHybridian,
-                faction: Faction.Etherian,
-                strength: 13,
-                intelligence: 9,
-                age: 33,
-                height: 164,
-                shortDescription: "A powerful serpent who took control of his own fate",
-                altName: "Serpent"
-            )
-            { }
-            public class EdgarSeraph(CharacterBase self) : CharacterVersion(
-                character: self,
-                species: Species.HomunculusEtheria | Species.Seraph,
-                faction: Faction.Etherian,
-                strength: 11,
-                intelligence: 9,
-                age: 29,
-                height: 164,
-                shortDescription: "A powerful being achieved the ultimate ascension level in all of Solumniar",
-                altName: "Seraph"
-            )
-            { }
+            static CharacterVersion EdgarHomunculus { get; } = new(
+                Character: EdgarCrowbell.Self,
+                Species: Species.HomunculusEtheria,
+                Faction: Faction.Etherian,
+                Strength: 11,
+                Intelligence: 9,
+                Age: 29,
+                Height: 164,
+                ShortDescription: "A powerful artificial lifeform from another world",
+                AltName: "Homunculus"
+            );
+            static CharacterVersion EdgarSerpentLord { get; } = new(
+                Character: EdgarCrowbell.Self,
+                Species: Species.HomunculusEtheria | Species.ArtificialHybridian,
+                Faction: Faction.Etherian,
+                Strength: 15,
+                Intelligence: 5,
+                Age: 33,
+                Height: 187,
+                ShortDescription: "The creation of the love and despair of Olivia",
+                AltName: "Serpent Lord"
+            );
+            static CharacterVersion EdgarSerpent { get; } = new(
+                Character: EdgarCrowbell.Self,
+                Species: Species.HomunculusEtheria | Species.ArtificialHybridian,
+                Faction: Faction.Etherian,
+                Strength: 13,
+                Intelligence: 9,
+                Age: 33,
+                Height: 164,
+                ShortDescription: "A powerful serpent who took control of his own fate",
+                AltName: "Serpent"
+            );
+            static CharacterVersion EdgarSeraph { get; } = new(
+                Character: EdgarCrowbell.Self,
+                Species: Species.HomunculusEtheria | Species.Seraph,
+                Faction: Faction.Etherian,
+                Strength: 11,
+                Intelligence: 9,
+                Age: 29,
+                Height: 164,
+                ShortDescription: "A powerful being achieved the ultimate ascension level in all of Solumniar",
+                AltName: "Seraph"
+            );
         }
     }
 }

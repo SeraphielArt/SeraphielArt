@@ -8,32 +8,21 @@ namespace SeraphielArt.Pages.Character
     [Route("Character")]
     public class CharacterAPI : Controller
     {
-        public static CharacterVersion[][] CharactersList { get; } = [
-            AliceBlessland.HumanEtherian,
-            AliceBlessland.Vampire,
+        public static CharacterBase[] CharactersList { get; } = [
+            AliceBlessland.Self,
+            //EdgarCrowbell.Self,
 
-            EdgarCrowbell.Homunculus,
-            EdgarCrowbell.SerpentLord,
-            EdgarCrowbell.Serpent,
-            EdgarCrowbell.Seraph,
-
-            LeilaAspor.Human,
-            LeilaAspor.Dragon,
-            LeilaAspor.Dragonfly,
-            LeilaAspor.VampireLord,
-
-            Lucilda.DawnStar,
-            Lucilda.Angel,
+            LeilaAspor.Self,
+            //Lucilda.Self,
         ];
 
         [HttpGet("{call}")]
         public IActionResult GetCharacterInformation(string call)
         {
-            CharacterVersion[] matchingCharacters = CharactersList.SelectMany(array => array)
-                                                                  .Where(c => c.Character.Api == call).ToArray();
-            if (matchingCharacters.Length > 0)
+            CharacterBase? matchingCharacter = CharactersList.FirstOrDefault(c => c.Api == call);
+            if (matchingCharacter != null)
             {
-                return View("CharacterVersion", matchingCharacters);
+                return View("CharacterVersion", matchingCharacter);
             }
             else
             {
