@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SeraphielArt.Pages.Cards
+namespace SeraphielArt.Pages.Card;
+
+public class RaviModel : PageModel
 {
-    public class RaviModel : PageModel
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
 }

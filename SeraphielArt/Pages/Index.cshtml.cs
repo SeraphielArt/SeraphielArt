@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SeraphielArt.Pages
+namespace SeraphielArt.Pages;
+
+public class Dashboard : PageModel
 {
-    public class Dashboard : PageModel
-    {
-    }
 }
