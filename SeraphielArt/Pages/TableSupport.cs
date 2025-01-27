@@ -848,9 +848,10 @@ const {name}generateLinkButton = document.getElementById('{name}-export');
                 tableRow = new("tr");
                 if (j == 0)
                 {
-                    tableElement = new("td");
+                    tableElement = new("th");
                     tableElement.Attributes.Add("scope", "row");
                     tableElement.Attributes.Add("rowspan", version.Length.ToString());
+                    tableElement.Attributes.Add("style", "vertical-align: middle;");
                     tableElement.InnerHtml.Append(version[j].AltName);
                     tableRow.InnerHtml.AppendHtml(tableElement);
                 }
@@ -862,7 +863,7 @@ const {name}generateLinkButton = document.getElementById('{name}-export');
                     version[j].ManaAscended?.ToString() ?? "NA",
                     version[j].Age.ToString(),
                     version[j].Height.ToString(),
-                    ];
+                ];
                 foreach (string value in values)
                 {
                     tableElement = new("td");
